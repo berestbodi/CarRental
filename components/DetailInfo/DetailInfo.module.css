@@ -1,0 +1,89 @@
+.mainInfo {
+  margin-bottom: 68px;
+}
+
+.mainInfo div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  margin-right: 16px;
+}
+
+.carId {
+  font-size: 16px;
+  color: var(--gray);
+}
+
+.titleThumb {
+  margin-bottom: 8px;
+}
+
+.markerThumb {
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.locationThumb {
+  gap: 16px;
+}
+
+.markerIcon {
+  margin-right: 2px;
+  width: 16px;
+  height: 16px;
+}
+
+.price {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: var(--button);
+  margin-bottom: 32px;
+}
+
+.subtitle {
+  font-size: 16px;
+}
+
+.moreInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 110px;
+}
+
+.titleConditions {
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.conditions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 16px;
+}
+
+.conditionTag {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}

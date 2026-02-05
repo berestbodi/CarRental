@@ -1,0 +1,118 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100dvh - 68px);
+  text-align: center;
+}
+
+.content {
+  max-width: 600px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: var(--badges);
+  color: var(--button);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.description {
+  color: var(--gray);
+  font-size: 18px;
+  margin-bottom: 32px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.homeBtn {
+  background-color: var(--button);
+  color: var(--white);
+  border-radius: 12px;
+  padding: 12px 51px;
+  font-weight: 600;
+  transition: background-color var(--transition);
+}
+
+.homeBtn:hover {
+  background-color: var(--button-hover);
+}
+
+.catalogBtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  background-color: transparent;
+  color: var(--main);
+  border-radius: 12px;
+  width: 240px;
+  padding: 12px 0;
+  border: 1px solid var(--button);
+  font-weight: 600;
+  overflow: hidden;
+  transition:
+    border var(--transition),
+    color var(--transition);
+}
+
+.catalogBtn:hover {
+  border: 1px solid var(--button-hover);
+  color: var(--button-hover);
+}
+
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background-color: var(--button);
+  width: 100%;
+  animation: countdownProgress 5s linear forwards;
+  transform-origin: left;
+}
+
+@keyframes countdownProgress {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+.catalogWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.timerText {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--gray);
+}
+
+.timerText span {
+  font-weight: 700;
+  color: var(--button);
+  min-width: 1ch;
+  display: inline-block;
+}

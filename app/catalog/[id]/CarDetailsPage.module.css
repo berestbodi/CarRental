@@ -1,0 +1,13 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 84px 0 104px;
+  display: flex;
+  flex-direction: row;
+  gap: 72px;
+}
+
+.image {
+  border-radius: 19px;
+  object-fit: cover;
+}

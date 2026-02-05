@@ -1,0 +1,180 @@
+.formContainer {
+  border: 1px solid var(--gray-light);
+  border-radius: 10px;
+  padding: 32px;
+  max-width: 640px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: var(--gray);
+  margin-bottom: 24px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input,
+.textarea {
+  border-radius: 12px;
+  padding: 12px 20px;
+  border: none;
+  background: var(--inputs);
+  font-size: 16px;
+  outline: none;
+  color: var(--main);
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--gray);
+}
+
+.textarea {
+  min-height: 88px;
+  overflow: auto;
+  resize: none;
+  margin-bottom: 24px;
+}
+
+.sendBtn {
+  display: block;
+  margin: 0 auto;
+  font-size: 16px;
+  font-weight: 600;
+  max-width: 156px;
+}
+
+.datePickerWrapper {
+  width: 100%;
+}
+
+.datePickerFullWidth {
+  width: 100%;
+  display: block;
+}
+
+.datePickerFullWidth :global(.react-datepicker__input-container) {
+  display: block;
+  width: 100%;
+}
+
+.datePickerFullWidth input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.customCalendar {
+  border: 1px solid var(--button) !important;
+  border-radius: 12px !important;
+  font-family: var(--second-family), sans-serif !important;
+  background-color: white !important;
+  overflow: hidden !important;
+}
+
+/* Хедер: місяць + дні тижня одним блоком */
+.customCalendar :global(.react-datepicker__header) {
+  background-color: white !important;
+  border-bottom: none;
+  border-top-left-radius: 12px !important;
+  border-top-right-radius: 12px !important;
+  padding: 14px 12px;
+}
+
+/* Назва місяця */
+.customCalendar :global(.react-datepicker__current-month) {
+  font-weight: 600 !important;
+  line-height: 1.2;
+  font-size: 16px !important;
+}
+
+/* Навігація БЕЗ ховера */
+.customCalendar :global(.react-datepicker__navigation) {
+  top: 8px !important;
+}
+
+.customCalendar :global(.react-datepicker__navigation:hover) {
+  background: none !important;
+  opacity: 0.8;
+}
+
+.customCalendar :global(.react-datepicker__navigation-icon::before) {
+  border-color: var(--button) !important;
+  border-width: 2px 2px 0 0 !important;
+}
+
+.customCalendar :global(.react-datepicker__day) {
+  font-weight: 400;
+  font-size: 14px;
+  height: 32px;
+  width: 36px;
+  margin: 0;
+  color: var(--main);
+  border-radius: 32px !important;
+  transition:
+    background-color var(--transition),
+    color var(--transition);
+}
+
+.customCalendar :global(.react-datepicker__day--selected) {
+  background-color: var(--button) !important;
+  color: white !important;
+}
+
+.customCalendar :global(.react-datepicker__day:hover) {
+  background-color: var(--button-hover) !important;
+  color: white !important;
+}
+
+.customCalendar :global(.react-datepicker__day--selected:hover) {
+  background-color: var(--button) !important;
+  cursor: default;
+}
+
+.customCalendar :global(.react-datepicker__day-names) {
+  border-bottom: 1px solid var(--button) !important;
+  display: flex;
+  gap: 5px;
+  padding: 0 12px 10px !important;
+}
+
+.customCalendar :global(.react-datepicker__day-name) {
+  font-size: 12px;
+  line-height: 1.2;
+  max-height: 14px;
+  color: var(--gray);
+  text-transform: uppercase;
+}
+
+.customCalendar :global(.react-datepicker__day--disabled) {
+  color: var(--gray) !important;
+  cursor: default;
+}
+
+.customCalendar :global(.react-datepicker__month) {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 18px 12px 12px;
+  margin: 0;
+}
+
+.customCalendar :global(.react-datepicker__week) {
+  height: 32px;
+}
+
+/* Прибираємо ховер ефект для заблокованих днів, щоб вони не ставали синіми */
+.customCalendar :global(.react-datepicker__day--disabled:hover) {
+  background-color: transparent !important;
+  color: var(--gray) !important;
+}

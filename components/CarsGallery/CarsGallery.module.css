@@ -1,0 +1,25 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.loadMoreBtn {
+  border: 1px solid var(--button);
+  font-size: 16px;
+  background-color: transparent;
+  color: var(--main);
+  display: block;
+  margin: 80px auto 0;
+  transition: border var(--transition);
+}
+
+.loadMoreBtn:hover {
+  background-color: transparent;
+  border: 1px solid var(--button-hover);
+}
