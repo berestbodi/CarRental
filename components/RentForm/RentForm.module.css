@@ -175,18 +175,3 @@
   background-color: transparent !important;
   color: var(--gray) !important;
 }
-
-.inputWrapper {
-  position: relative;
-}
-
-.error {
-  position: absolute;
-  left: 100px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: brown;
-  font-family: var(--second-family);
-  font-size: 12px;
-  white-space: nowrap;
-}
