@@ -36,8 +36,10 @@ const FormAutoSaver = () => {
 
 export default function RentForm() {
   const [formData, setFormData] = useState<FormValues>(initialValues);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     const data = localStorage.getItem(STORAGE_KEY);
     if (data) {
       try {
@@ -55,10 +57,18 @@ export default function RentForm() {
     values: FormValues,
     { resetForm }: FormikHelpers<FormValues>,
   ) => {
-    localStorage.removeItem(STORAGE_KEY);
-
     const iziToast = (await import("izitoast")).default;
 
+    if (!values.name || !values.email || !values.bookingDate) {
+      iziToast.error({
+        title: "Error",
+        message: "Please fill in all required fields: Name, Email, and Date.",
+        position: "topRight",
+      });
+      return;
+    }
+
+    localStorage.removeItem(STORAGE_KEY);
     resetForm({ values: initialValues });
     setFormData(initialValues);
 
@@ -74,6 +84,8 @@ export default function RentForm() {
     });
   };
 
+  if (!isMounted) return null;
+
   return (
     <div className={css.formContainer}>
       <h2 className={css.title}>Book your car now</h2>
@@ -87,20 +99,14 @@ export default function RentForm() {
         onSubmit={handleSubmit}
       >
         {({ setFieldValue, values }) => (
-          <Form className={css.form}>
+          <Form className={css.form} noValidate>
             <FormAutoSaver />
-            <Field
-              name="name"
-              placeholder="Name*"
-              className={css.input}
-              required
-            />
+            <Field name="name" placeholder="Name*" className={css.input} />
             <Field
               name="email"
               type="email"
               placeholder="Email*"
               className={css.input}
-              required
             />
 
             <div className={css.datePickerWrapper}>
@@ -109,7 +115,8 @@ export default function RentForm() {
                 onChange={(date: Date | null) =>
                   setFieldValue("bookingDate", date)
                 }
-                placeholderText="Booking date"
+                showPopperArrow={true}
+                placeholderText="Booking date*"
                 wrapperClassName={css.datePickerFullWidth}
                 className={css.input}
                 dateFormat="dd/MM/yyyy"

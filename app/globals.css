@@ -68,3 +68,8 @@ a {
   color: inherit;
   transition: color var(--transition);
 }
+
+svg.react-datepicker__triangle {
+  stroke: var(--button) !important;
+  fill: white !important;
+}

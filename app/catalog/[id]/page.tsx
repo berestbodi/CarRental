@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import css from "./CarDetailsPage.module.css";
 import RentForm from "@/components/RentForm/RentForm";
 import DetailInfo from "@/components/DetailInfo/DetailInfo";
-import { CarImage } from "@/components/CarImage/CarImage";
+import Image from "next/image";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -21,7 +21,16 @@ export default async function CarDetailsPage({ params }: PageProps) {
   return (
     <div className={css.container}>
       <div className={css.leftSide}>
-        <CarImage src={car.img} alt={`${car.brand} ${car.model}`} />
+        <div className={css.imageWrapper}>
+          <Image
+            key={car.id}
+            src={car.img}
+            alt={`${car.brand} ${car.model}`}
+            width={640}
+            height={512}
+            className={css.image}
+          />
+        </div>
         <RentForm />
       </div>
       <DetailInfo car={car} />

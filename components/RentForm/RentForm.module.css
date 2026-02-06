@@ -79,10 +79,10 @@
   border-radius: 12px !important;
   font-family: var(--second-family), sans-serif !important;
   background-color: white !important;
-  overflow: hidden !important;
+  overflow: visible !important;
+  position: relative;
 }
 
-/* Хедер: місяць + дні тижня одним блоком */
 .customCalendar :global(.react-datepicker__header) {
   background-color: white !important;
   border-bottom: none;
@@ -91,14 +91,12 @@
   padding: 14px 12px;
 }
 
-/* Назва місяця */
 .customCalendar :global(.react-datepicker__current-month) {
   font-weight: 600 !important;
   line-height: 1.2;
   font-size: 16px !important;
 }
 
-/* Навігація БЕЗ ховера */
 .customCalendar :global(.react-datepicker__navigation) {
   top: 8px !important;
 }
@@ -173,8 +171,22 @@
   height: 32px;
 }
 
-/* Прибираємо ховер ефект для заблокованих днів, щоб вони не ставали синіми */
 .customCalendar :global(.react-datepicker__day--disabled:hover) {
   background-color: transparent !important;
   color: var(--gray) !important;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.error {
+  position: absolute;
+  left: 100px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: brown;
+  font-family: var(--second-family);
+  font-size: 12px;
+  white-space: nowrap;
 }
