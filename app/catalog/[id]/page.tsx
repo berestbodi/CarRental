@@ -5,6 +5,44 @@ import RentForm from "@/components/RentForm/RentForm";
 import DetailInfo from "@/components/DetailInfo/DetailInfo";
 import Image from "next/image";
 
+export async function generateMetadata({ params }: PageProps) {
+  const { id } = await params;
+  const car = await getCarById(id);
+
+  if (!car) {
+    return {
+      title: "Car Not Found",
+    };
+  }
+
+  const title = `${car.brand} ${car.model} for Rent | Premium Service`;
+  const description = `Rent the ${car.brand} ${car.model} (${car.year}). ${car.description.substring(0, 150)}...`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      images: [
+        {
+          url: car.img,
+          width: 800,
+          height: 600,
+          alt: `${car.brand} ${car.model}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [car.img],
+    },
+  };
+}
+
 interface PageProps {
   params: Promise<{ id: string }>;
 }
