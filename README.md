@@ -67,5 +67,3 @@ npm run dev
 ---
 
 > Feel free to ⭐ this repository if you find it helpful!
-
-```
