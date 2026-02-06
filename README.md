@@ -1,4 +1,3 @@
-```
 # 🚗 RentalCar
 
 ### *Your premium car rental experience in Ukraine*
