@@ -69,7 +69,3 @@ npm run dev
 > Feel free to ⭐ this repository if you find it helpful!
 
 ```
-
-Бажаєш, щоб я додав посилання на твій актуальний домен у розділ **Getting Started**?
-
-```
