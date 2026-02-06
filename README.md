@@ -1,8 +1,7 @@
----
-
+```
 # 🚗 RentalCar
 
-### "*Your premium car rental experience in Ukraine*"
+### *Your premium car rental experience in Ukraine*
 
 **RentalCar** is a high-performance web platform designed to streamline the car rental process. Combining a sleek user interface with robust backend logic, it offers users a seamless journey from browsing a diverse fleet to completing a booking with real-time data persistence.
 
@@ -47,9 +46,8 @@ The project is built using modern industry standards to ensure SEO optimization,
 ### 🛠 Getting Started
 
 1. **Clone the repository:**
-
 ```bash
-git clone https://github.com/your-username/car-rental-one-delta.git
+git clone [https://github.com/berestbodi/car-rental-one-delta.git](https://github.com/berestbodi/car-rental-one-delta.git)
 
 ```
 
@@ -71,4 +69,8 @@ npm run dev
 
 > Feel free to ⭐ this repository if you find it helpful!
 
----
+```
+
+Бажаєш, щоб я додав посилання на твій актуальний домен у розділ **Getting Started**?
+
+```
