@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "RentalCar | Luxury & Affordable Car Rentals",
     description: "Rent the best cars in Ukraine at affordable prices.",
-    url: "https://car-rental-one-delta.vercel.app/",
+    url: "https://car-rental-one-delta.vercel.app",
     siteName: "RentalCar",
     images: [
       {
