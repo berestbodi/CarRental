@@ -16,6 +16,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://car-rental-one-delta.vercel.app"),
   title: "RentalCar | Luxury & Affordable Car Rentals",
   description:
     "Rent the best cars in Ukraine at affordable prices. RentalCar - your journey starts here.",
