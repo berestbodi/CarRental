@@ -2,7 +2,7 @@
 
 # 🚗 RentalCar
 
-### *Your premium car rental experience in Ukraine*
+### "*Your premium car rental experience in Ukraine*"
 
 **RentalCar** is a high-performance web platform designed to streamline the car rental process. Combining a sleek user interface with robust backend logic, it offers users a seamless journey from browsing a diverse fleet to completing a booking with real-time data persistence.
 
