@@ -4,13 +4,13 @@
 
 ### *Your premium car rental experience in Ukraine*
 
-**RentalCar** — це сучасна веб-платформа для оренди автомобілів, яка поєднує вишуканий дизайн із потужним функціоналом. Проект створений для забезпечення максимально швидкого та інтуїтивного процесу вибору авто: від детальної фільтрації за брендами до миттєвого бронювання з автоматичним збереженням прогресу.
+**RentalCar** is a high-performance web platform designed to streamline the car rental process. Combining a sleek user interface with robust backend logic, it offers users a seamless journey from browsing a diverse fleet to completing a booking with real-time data persistence.
 
 ---
 
 ### 🚀 Tech Stack & Architecture
 
-Проект побудований на базі передових технологій для забезпечення SEO-оптимізації та високої продуктивності:
+The project is built using modern industry standards to ensure SEO optimization, type safety, and exceptional speed:
 
 | Category | Tools & Technologies |
 | --- | --- |
@@ -26,40 +26,41 @@
 
 #### 🏗️ SEO & Performance (Server-Side)
 
-* **Dynamic Metadata:** Реалізовано динамічну генерацію метаданих для кожної сторінки автомобіля, включаючи OpenGraph зображення для покращеного відображення в соцмережах.
-* **Server-Side Rendering (SSR):** Використання серверних компонентів для миттєвого завантаження каталогу та покращення індексації пошуковими системами.
+* **Dynamic Metadata:** Implemented a robust metadata engine that generates unique titles, descriptions, and OpenGraph images for every car, ensuring high visibility on search engines and social media.
+* **Server-Side Rendering (SSR):** Leveraged Next.js Server Components to deliver instant catalog loading and superior indexing.
+* **Image Optimization:** Used the `next/image` component for automatic format conversion (WebP), lazy loading, and responsive sizing to minimize LCP (Largest Contentful Paint).
 
-#### 📝 Advanced Form & UX
+#### 📝 Advanced Form Logic & UX
 
-* **Formik & Persistence:** Розумна форма бронювання з автоматичним збереженням даних у `localStorage` — ваші введені дані не зникнуть при оновленні сторінки.
-* **Custom Date Management:** Інтегрований `react-datepicker` із кастомною стилізацією, що забезпечує зручний вибір дат оренди.
-* **Real-time Feedback:** Система сповіщень **iziToast**, яка інформує про успішне бронювання або помилки валідації без перевантаження інтерфейсу.
+* **Formik & Persistence:** Features an intelligent booking form with an "Auto-Saver" mechanism. In-progress data is synced to `localStorage`, protecting users from data loss upon page refreshes.
+* **Custom Date Management:** Integrated `react-datepicker` with a bespoke CSS implementation (custom triangles and rounded UI) to match the premium brand identity.
+* **Real-time Feedback:** Integrated **iziToast** for elegant, non-intrusive notifications regarding successful bookings and field validation errors.
 
 #### 🎨 Design & UI
 
-* **CSS Modules:** Повна інкапсуляція стилів для уникнення колізій та легкого масштабування проекту.
-* **Responsive Layout:** Адаптивна сітка (Grid/Flexbox), що забезпечує ідеальний вигляд на iPhone, планшетах та Desktop.
-* **Smart Filtering:** Гнучка система фільтрації авто за брендами, ціною та характеристиками в реальному часі.
+* **Encapsulated Styling:** Used **CSS Modules** to ensure style isolation, preventing global scope pollution and making the codebase highly maintainable.
+* **Responsive Architecture:** A mobile-first approach using CSS Grid and Flexbox, ensuring the application looks perfect on everything from small smartphones to ultra-wide monitors.
+* **Smart Filtering:** A dynamic filtering system that allows users to narrow down the fleet by brand, price, and mileage in real-time.
 
 ---
 
 ### 🛠 Getting Started
 
-1. **Клонуйте репозиторій:**
+1. **Clone the repository:**
 
 ```bash
 git clone https://github.com/your-username/car-rental-one-delta.git
 
 ```
 
-2. **Встановіть залежності:**
+2. **Install dependencies:**
 
 ```bash
 npm install
 
 ```
 
-3. **Запустіть сервер розробки:**
+3. **Run the development server:**
 
 ```bash
 npm run dev
@@ -68,8 +69,6 @@ npm run dev
 
 ---
 
-> Якщо цей проект був вам корисним, не забудьте поставити ⭐ цьому репозиторію!
+> Feel free to ⭐ this repository if you find it helpful!
 
 ---
-
-**Чи хочете ви, щоб я додав до таблиці технологій посилання на ваші API або специфічні деталі про архітектуру папок?**
