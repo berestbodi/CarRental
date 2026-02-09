@@ -1,42 +1,48 @@
-.mainInfo {
-  margin-bottom: 68px;
+.container {
+  width: 100%;
 }
 
-.mainInfo div {
+.mainInfo {
+  margin-bottom: 40px;
+}
+
+.titleThumb {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 
 .title {
   font-weight: 600;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.33333;
-  margin-right: 16px;
 }
 
 .carId {
-  font-size: 16px;
+  font-size: 14px;
   color: var(--gray);
 }
 
-.titleThumb {
-  margin-bottom: 8px;
-}
-
 .markerThumb {
+  display: flex;
+  align-items: flex-start;
   margin-bottom: 16px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .locationThumb {
-  gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
 }
 
 .markerIcon {
-  margin-right: 2px;
+  margin-right: 4px;
   width: 16px;
   height: 16px;
+  flex-shrink: 0;
 }
 
 .price {
@@ -44,46 +50,81 @@
   font-size: 24px;
   line-height: 1.33333;
   color: var(--button);
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .subtitle {
-  font-size: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--main);
 }
 
 .moreInfo {
   display: flex;
   flex-direction: column;
-  gap: 110px;
+  gap: 40px;
 }
 
 .titleConditions {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.2;
 }
 
 .conditions {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  font-size: 16px;
+  gap: 12px;
+  font-size: 14px;
 }
 
-.conditionTag {
+.tag {
   display: flex;
   align-items: center;
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 .icon {
   width: 16px;
   height: 16px;
   margin-right: 8px;
+  flex-shrink: 0;
 }
 
-.tag {
-  display: flex;
-  align-items: center;
-  font-size: 16px;
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 24px;
+  }
+
+  .moreInfo {
+    gap: 60px;
+  }
+
+  .conditions {
+    font-size: 16px;
+  }
+
+  .tag {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .mainInfo {
+    margin-bottom: 68px;
+  }
+
+  .moreInfo {
+    gap: 110px;
+  }
+
+  .titleConditions {
+    font-size: 20px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
 }

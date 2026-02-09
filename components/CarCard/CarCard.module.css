@@ -24,6 +24,7 @@
   box-sizing: border-box;
   max-width: 276px;
   position: relative;
+  margin: 0 auto;
 }
 
 .imgWrapper {

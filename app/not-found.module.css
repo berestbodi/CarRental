@@ -5,46 +5,59 @@
   justify-content: center;
   min-height: calc(100dvh - 68px);
   text-align: center;
+  padding: 0 20px;
 }
 
 .content {
-  max-width: 600px;
+  width: 100%;
+  max-width: 335px;
 }
 
 .badge {
   display: inline-block;
   padding: 6px 12px;
-  background-color: var(--badges);
+  background-color: #f7f7fb;
   color: var(--button);
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
-  margin-bottom: 20px;
-}
-
-.title {
-  font-size: 48px;
   margin-bottom: 16px;
 }
 
+.title {
+  font-size: 28px;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
 .description {
-  color: var(--gray);
-  font-size: 18px;
-  margin-bottom: 32px;
+  color: #8e929a;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 24px;
 }
 
 .actions {
   display: flex;
+  flex-direction: column;
   gap: 12px;
-  justify-content: center;
+  width: 100%;
+}
+
+.homeBtn,
+.catalogBtn {
+  width: 100%;
+  padding: 14px 0;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
 }
 
 .homeBtn {
   background-color: var(--button);
-  color: var(--white);
-  border-radius: 12px;
-  padding: 12px 51px;
-  font-weight: 600;
+  color: white;
   transition: background-color var(--transition);
 }
 
@@ -58,22 +71,14 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-
   background-color: transparent;
-  color: var(--main);
-  border-radius: 12px;
-  width: 240px;
-  padding: 12px 0;
   border: 1px solid var(--button);
-  font-weight: 600;
   overflow: hidden;
-  transition:
-    border var(--transition),
-    color var(--transition);
+  transition: all var(--transition);
 }
 
 .catalogBtn:hover {
-  border: 1px solid var(--button-hover);
+  border-color: var(--button-hover);
   color: var(--button-hover);
 }
 
@@ -97,22 +102,50 @@
   }
 }
 
-.catalogWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
+@media screen and (min-width: 768px) {
+  .container {
+    min-height: calc(100dvh - 68px);
+  }
+
+  .content {
+    max-width: 500px;
+  }
+
+  .badge {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 40px;
+  }
+
+  .description {
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+
+  .actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .homeBtn,
+  .catalogBtn {
+    width: 240px;
+  }
 }
 
-.timerText {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--gray);
-}
+@media screen and (min-width: 1440px) {
+  .content {
+    max-width: 600px;
+  }
 
-.timerText span {
-  font-weight: 700;
-  color: var(--button);
-  min-width: 1ch;
-  display: inline-block;
+  .title {
+    font-size: 48px;
+  }
+
+  .description {
+    font-size: 18px;
+  }
 }

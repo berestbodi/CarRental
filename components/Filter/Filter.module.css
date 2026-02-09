@@ -1,15 +1,16 @@
 .filterForm {
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   gap: 16px;
-  margin-bottom: 56px;
+  margin-bottom: 40px;
 }
 
 .inputGroup {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .label {
@@ -23,7 +24,7 @@
 
 .dropdownWrapper {
   position: relative;
-  width: 204px;
+  width: 100%;
 }
 
 .dropdownHeader {
@@ -120,7 +121,6 @@
 .dropdownList::-webkit-scrollbar-thumb,
 .dropdownListPrice::-webkit-scrollbar-thumb {
   background: var(--gray-light);
-
   border: 4px solid transparent;
   background-clip: padding-box;
   border-radius: 10px;
@@ -129,6 +129,7 @@
 .mileageContainer {
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .inputWrapper {
@@ -137,7 +138,7 @@
   background-color: #f7f7fb;
   height: 44px;
   padding: 0 18px;
-  width: 160px;
+  flex: 1;
 }
 
 .inputWrapper:first-child {
@@ -173,4 +174,38 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 1.25;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .filterForm {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    margin-bottom: 56px;
+  }
+
+  .inputGroup {
+    width: auto;
+  }
+
+  .dropdownWrapper {
+    width: 204px;
+  }
+
+  .inputWrapper {
+    width: 160px;
+    flex: none;
+  }
+
+  .searchBtn {
+    width: auto;
+    padding: 12px 51px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .filterForm {
+    gap: 18px;
+  }
 }

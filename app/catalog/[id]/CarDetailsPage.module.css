@@ -1,19 +1,24 @@
 .container {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 84px 0 104px;
+  padding: 64px 16px 60px;
   display: flex;
-  flex-direction: row;
-  gap: 72px;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.leftSide {
+  width: 100%;
 }
 
 .imageWrapper {
-  width: 640px;
-  height: 512px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 4;
   background-color: #f3f3f3;
   overflow: hidden;
   position: relative;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
   border-radius: 19px;
 }
 
@@ -23,4 +28,34 @@
   border-radius: 19px;
   object-fit: cover;
   display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 64px 32px 80px;
+    gap: 50px;
+  }
+
+  .imageWrapper {
+    margin-bottom: 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1200px;
+    padding: 84px 0 104px;
+    flex-direction: row;
+    gap: 72px;
+  }
+
+  .leftSide {
+    width: 640px;
+  }
+
+  .imageWrapper {
+    width: 640px;
+    height: 512px;
+    margin-bottom: 40px;
+  }
 }
