@@ -43,20 +43,6 @@ h6 {
   margin: 0;
 }
 
-button {
-  cursor: pointer;
-  border: none;
-  background: var(--button);
-  color: var(--white);
-  border-radius: 12px;
-  padding: 12px 51px;
-  transition: background var(--transition);
-}
-
-button:hover {
-  background: var(--button-hover);
-}
-
 ul,
 li {
   list-style: none;

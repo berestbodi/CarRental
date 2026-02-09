@@ -5,10 +5,17 @@ import { useState, useRef, useEffect } from "react";
 import css from "./Filter.module.css";
 import { CarQueryParams } from "@/types/car";
 import { Icon } from "../Icon/Icon";
+import Button from "../Button/Button";
 
 interface FilterProps {
   brands: string[];
 }
+
+const formatDisplayNumber = (value: string | number) => {
+  if (!value) return "";
+  const num = value.toString().replace(/[^\d]/g, "");
+  return new Intl.NumberFormat("en-US").format(Number(num));
+};
 
 export default function Filter({ brands }: FilterProps) {
   const router = useRouter();
@@ -46,7 +53,8 @@ export default function Filter({ brands }: FilterProps) {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setValues((prev) => ({ ...prev, [name]: value }));
+    const cleanValue = value.replace(/[^\d]/g, "");
+    setValues((prev) => ({ ...prev, [name]: cleanValue }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -109,13 +117,10 @@ export default function Filter({ brands }: FilterProps) {
             className={css.dropdownHeader}
             onClick={() => setIsOpenPrice(!isOpenPrice)}
           >
-            <span>
-              {values.rentalPrice === "" &&
-              searchParams.get("rentalPrice") === null
-                ? "Choose a price"
-                : values.rentalPrice === ""
-                  ? "All prices"
-                  : `To ${values.rentalPrice}$`}
+            <span className={!values.rentalPrice ? css.placeholder : ""}>
+              {values.rentalPrice
+                ? `To ${values.rentalPrice}$`
+                : "Choose a price"}
             </span>
             <Icon
               id="arrow-Up"
@@ -152,12 +157,13 @@ export default function Filter({ brands }: FilterProps) {
               From
             </label>
             <input
-              type="number"
+              type="text"
               id="minMileage"
               name="minMileage"
-              value={values.minMileage}
+              value={formatDisplayNumber(values.minMileage || "")}
               onChange={handleInputChange}
               className={css.mileageInput}
+              autoComplete="off"
             />
           </div>
           <div className={css.inputWrapper}>
@@ -165,20 +171,21 @@ export default function Filter({ brands }: FilterProps) {
               To
             </label>
             <input
-              type="number"
+              type="text"
               id="maxMileage"
               name="maxMileage"
-              value={values.maxMileage}
+              value={formatDisplayNumber(values.maxMileage || "")}
               onChange={handleInputChange}
               className={css.mileageInput}
+              autoComplete="off"
             />
           </div>
         </div>
       </div>
 
-      <button type="submit" className={css.searchBtn}>
+      <Button type="submit" className={css.searchBtn}>
         Search
-      </button>
+      </Button>
     </form>
   );
 }

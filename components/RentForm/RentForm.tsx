@@ -6,20 +6,21 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "izitoast/dist/css/iziToast.min.css";
 import css from "./RentForm.module.css";
+import Button from "../Button/Button";
 
 const STORAGE_KEY = "rent-form-data";
 
 interface FormValues {
   name: string;
   email: string;
-  bookingDate: Date | null;
+  bookingDates: [Date | null, Date | null];
   comment: string;
 }
 
 const initialValues: FormValues = {
   name: "",
   email: "",
-  bookingDate: null,
+  bookingDates: [null, null],
   comment: "",
 };
 
@@ -44,8 +45,11 @@ export default function RentForm() {
     if (data) {
       try {
         const parsed = JSON.parse(data);
-        if (parsed.bookingDate)
-          parsed.bookingDate = new Date(parsed.bookingDate);
+        if (parsed.bookingDates) {
+          parsed.bookingDates = parsed.bookingDates.map((d: string | null) =>
+            d ? new Date(d) : null,
+          );
+        }
         setFormData(parsed);
       } catch {
         setFormData(initialValues);
@@ -58,11 +62,12 @@ export default function RentForm() {
     { resetForm }: FormikHelpers<FormValues>,
   ) => {
     const iziToast = (await import("izitoast")).default;
+    const [start, end] = values.bookingDates;
 
-    if (!values.name || !values.email || !values.bookingDate) {
+    if (!values.name || !values.email || !start || !end) {
       iziToast.error({
         title: "Error",
-        message: "Please fill in all required fields: Name, Email, and Date.",
+        message: "Please fill in all required fields and select a date range.",
         position: "topRight",
       });
       return;
@@ -74,13 +79,8 @@ export default function RentForm() {
 
     iziToast.success({
       title: "Success",
-      message: "Your booking request has been sent!",
+      message: "Your booking request for the period has been sent!",
       position: "topRight",
-      backgroundColor: "#ffffff",
-      titleColor: "#101828",
-      messageColor: "#8d929a",
-      iconColor: "#3470ff",
-      progressBarColor: "#3470ff",
     });
   };
 
@@ -111,18 +111,24 @@ export default function RentForm() {
 
             <div className={css.datePickerWrapper}>
               <DatePicker
-                selected={values.bookingDate}
-                onChange={(date: Date | null) =>
-                  setFieldValue("bookingDate", date)
-                }
-                showPopperArrow={true}
-                placeholderText="Booking date*"
+                selectsRange={true}
+                startDate={values.bookingDates[0]}
+                endDate={values.bookingDates[1]}
+                onChange={(update: [Date | null, Date | null]) => {
+                  setFieldValue("bookingDates", update);
+                }}
+                isClearable={true}
+                placeholderText="Booking date"
                 wrapperClassName={css.datePickerFullWidth}
                 className={css.input}
                 dateFormat="dd/MM/yyyy"
                 calendarClassName={css.customCalendar}
                 minDate={new Date()}
-                onKeyDown={(e) => e.preventDefault()}
+                onKeyDown={(e) => {
+                  if (e.key !== "Backspace" && e.key !== "Delete") {
+                    e.preventDefault();
+                  }
+                }}
                 formatWeekDay={(nameOfDay) =>
                   nameOfDay.substring(0, 3).toUpperCase()
                 }
@@ -135,9 +141,9 @@ export default function RentForm() {
               placeholder="Comment"
               className={css.textarea}
             />
-            <button type="submit" className={css.sendBtn}>
+            <Button type="submit" className={css.sendBtn}>
               Send
-            </button>
+            </Button>
           </Form>
         )}
       </Formik>

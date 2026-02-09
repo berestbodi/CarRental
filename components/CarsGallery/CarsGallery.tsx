@@ -6,6 +6,8 @@ import css from "./CarsGallery.module.css";
 import { CarCard } from "../CarCard/CarCard";
 import { getCars } from "@/lib/api/car";
 import axios from "axios";
+import Button from "../Button/Button";
+import Pagination from "../Pagination/Pagination";
 
 interface CarsGalleryProps {
   initialCars: Car[];
@@ -28,7 +30,7 @@ export default function CarsGallery({
   }, [initialCars]);
 
   const handleLoadMore = async () => {
-    if (isLoading) return;
+    if (isLoading || page >= totalPages) return;
 
     setIsLoading(true);
     const nextPage = page + 1;
@@ -41,16 +43,41 @@ export default function CarsGallery({
         setPage(nextPage);
       }
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.error(
-          "Server message:",
-          error.response?.data?.message || error.message,
-        );
-      } else {
-        console.error("Non-axios error:", error);
-      }
+      handleError(error);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handlePageClick = async (event: { selected: number }) => {
+    const selectedPage = event.selected + 1;
+    if (selectedPage === page) return;
+
+    setIsLoading(true);
+
+    try {
+      const data = await getCars({ ...filters, page: selectedPage });
+
+      if (data.cars) {
+        setCars(data.cars);
+        setPage(selectedPage);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    } catch (error) {
+      handleError(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleError = (error: unknown) => {
+    if (axios.isAxiosError(error)) {
+      console.error(
+        "Server message:",
+        error.response?.data?.message || error.message,
+      );
+    } else {
+      console.error("Error:", error);
     }
   };
 
@@ -62,16 +89,24 @@ export default function CarsGallery({
         ))}
       </ul>
 
-      {page < totalPages && (
-        <button
-          type="button"
-          className={css.loadMoreBtn}
-          onClick={handleLoadMore}
-          disabled={isLoading}
-        >
-          {isLoading ? "Loading..." : "Load more"}
-        </button>
-      )}
+      <div className={css.navigationWrapper}>
+        {page < totalPages && (
+          <Button
+            type="button"
+            className={css.loadMoreBtn}
+            onClick={handleLoadMore}
+            disabled={isLoading}
+          >
+            {isLoading ? "Loading..." : "Load more"}
+          </Button>
+        )}
+
+        <Pagination
+          pageCount={totalPages}
+          forcePage={page - 1}
+          onPageChange={handlePageClick}
+        />
+      </div>
     </div>
   );
 }

@@ -1,0 +1,83 @@
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  align-items: center;
+}
+
+.pageLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: transparent;
+  font-size: 16px;
+  transition: all var(--transition);
+  cursor: pointer;
+  border: 1px solid rgba(18, 20, 23, 0.1);
+}
+
+.pageLink:hover {
+  border-color: var(--button);
+  color: var(--button);
+}
+
+.activePage .pageLink {
+  background: var(--button);
+  color: white;
+  border-color: var(--button);
+}
+
+.navItem .pageLink {
+  background: transparent;
+  border: none;
+  color: #121417;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.navItem .pageLink:hover {
+  color: var(--button-hover);
+}
+
+.breakItem {
+  padding: 0 4px;
+}
+
+.disabled .pageLink {
+  color: #8e929a;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pageIconRight,
+.pageIconLeft {
+  margin: 0 5px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  fill: var(--main);
+  transition: color var(--transition);
+}
+
+.pageIconRight:hover,
+.pageIconLeft:hover {
+  fill: var(--button-hover);
+}
+
+.pageIconRight {
+  transform: rotate(90deg);
+}
+
+.pageIconLeft {
+  transform: rotate(-90deg);
+}

@@ -62,7 +62,9 @@ export const CarCard = ({ car }: CarCardProps) => {
 
       <div className={css.secondInfo}>
         <span className={css.type}>{car.type}</span>
-        <span className={css.mileage}>{car.mileage} km</span>
+        <span className={css.mileage}>
+          {car.mileage.toLocaleString("uk-UA")} km
+        </span>
       </div>
 
       <Link

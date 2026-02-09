@@ -41,13 +41,14 @@
 .iconArrow {
   width: 16px;
   height: 16px;
+  transform: rotate(180deg);
   fill: var(--main);
   transition: transform var(--transition);
   pointer-events: none;
 }
 
 .rotate {
-  transform: rotate(180deg);
+  transform: rotate(0deg);
 }
 
 .dropdownList {

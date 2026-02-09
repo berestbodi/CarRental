@@ -22,7 +22,9 @@ export default function DetailInfo({ car }: Props) {
             <span className={css.city}>
               {car.address.split(",")[1]},{car.address.split(",")[2]}
             </span>
-            <span className={css.mileage}>Mileage: {car.mileage} km</span>
+            <span className={css.mileage}>
+              Mileage: {car.mileage.toLocaleString("uk-UA")} km
+            </span>
           </div>
         </div>
 
