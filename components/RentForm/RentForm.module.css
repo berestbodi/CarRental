@@ -2,7 +2,7 @@
   border: 1px solid var(--gray-light);
   border-radius: 10px;
   padding: 32px;
-  max-width: 640px;
+  width: 100%;
 }
 
 .title {
@@ -178,7 +178,7 @@
 }
 
 .datePickerWrapper :global(.react-datepicker__close-icon) {
-  padding: 0 12px 0 0;
+  padding: 0 6px 0 0;
 }
 
 .datePickerWrapper :global(.react-datepicker__close-icon::after) {

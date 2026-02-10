@@ -67,11 +67,16 @@ export default async function CarDetailsPage({ params }: PageProps) {
             width={640}
             height={512}
             className={css.image}
+            priority
           />
         </div>
-        <RentForm />
+        <div className={css.rentFormWrapper}>
+          <RentForm />
+        </div>
       </div>
-      <DetailInfo car={car} />
+      <div className={css.detailInfoWrapper}>
+        <DetailInfo car={car} />
+      </div>
     </div>
   );
 }
