@@ -1,3 +1,14 @@
+.fovoriteIconThumb {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 48px;
+  height: 48px;
+  background-color: var(--gray);
+  z-index: 9;
+  border-radius: 0 14px 0 14px;
+}
+
 .favoriteBtn {
   position: absolute;
   top: 16px;
@@ -22,7 +33,7 @@
 .item {
   flex: 1 1 calc(33.333% - 32px);
   box-sizing: border-box;
-  max-width: 276px;
+  width: 100%;
   position: relative;
   margin: 0 auto;
 }

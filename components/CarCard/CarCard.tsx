@@ -20,16 +20,18 @@ export const CarCard = ({ car }: CarCardProps) => {
 
   return (
     <li className={css.item}>
-      <button
-        onClick={() => toggleFavorite(car.id)}
-        className={css.favoriteBtn}
-      >
-        {isFavorite ? (
-          <Icon id="favorite-active" className={css.icon} />
-        ) : (
-          <Icon id="favorite" className={css.icon} />
-        )}
-      </button>
+      <div className={css.fovoriteIconThumb}>
+        <button
+          onClick={() => toggleFavorite(car.id)}
+          className={css.favoriteBtn}
+        >
+          {isFavorite ? (
+            <Icon id="favorite-active" className={css.icon} />
+          ) : (
+            <Icon id="favorite" className={css.icon} />
+          )}
+        </button>
+      </div>
 
       <div className={css.imgWrapper}>
         <Image
