@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Car, CarQueryParams } from "@/types/car";
 import css from "./CarsGallery.module.css";
 import { CarCard } from "../CarCard/CarCard";
@@ -8,6 +8,7 @@ import { getCars } from "@/lib/api/car";
 import axios from "axios";
 import Button from "../Button/Button";
 import Pagination from "../Pagination/Pagination";
+import { useFavoriteStore } from "@/lib/store/favoriteStore";
 
 interface CarsGalleryProps {
   initialCars: Car[];
@@ -24,10 +25,25 @@ export default function CarsGallery({
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
 
+  const { favorites, _hasHydrated } = useFavoriteStore();
+
   useEffect(() => {
     setCars(initialCars);
     setPage(1);
   }, [initialCars]);
+
+  const sortedCars = useMemo(() => {
+    if (!_hasHydrated) return cars;
+
+    return [...cars].sort((a, b) => {
+      const aIsFav = favorites.includes(a.id);
+      const bIsFav = favorites.includes(b.id);
+
+      if (aIsFav && !bIsFav) return -1;
+      if (!aIsFav && bIsFav) return 1;
+      return 0;
+    });
+  }, [cars, favorites, _hasHydrated]);
 
   const handleLoadMore = async () => {
     if (isLoading || page >= totalPages) return;
@@ -84,7 +100,7 @@ export default function CarsGallery({
   return (
     <div className={css.container}>
       <ul className={css.list}>
-        {cars.map((car) => (
+        {sortedCars.map((car) => (
           <CarCard key={car.id} car={car} />
         ))}
       </ul>
