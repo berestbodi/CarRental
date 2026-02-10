@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Car, CarQueryParams } from "@/types/car";
 import css from "./CarsGallery.module.css";
 import { CarCard } from "../CarCard/CarCard";
@@ -47,13 +48,11 @@ export default function CarsGallery({
 
   const handleLoadMore = async () => {
     if (isLoading || page >= totalPages) return;
-
     setIsLoading(true);
     const nextPage = page + 1;
 
     try {
       const data = await getCars({ ...filters, page: nextPage });
-
       if (data.cars && data.cars.length > 0) {
         setCars((prev) => [...prev, ...data.cars]);
         setPage(nextPage);
@@ -70,10 +69,8 @@ export default function CarsGallery({
     if (selectedPage === page) return;
 
     setIsLoading(true);
-
     try {
       const data = await getCars({ ...filters, page: selectedPage });
-
       if (data.cars) {
         setCars(data.cars);
         setPage(selectedPage);
@@ -100,9 +97,24 @@ export default function CarsGallery({
   return (
     <div className={css.container}>
       <ul className={css.list}>
-        {sortedCars.map((car) => (
-          <CarCard key={car.id} car={car} />
-        ))}
+        <AnimatePresence mode="popLayout">
+          {sortedCars.map((car) => (
+            <motion.li
+              key={car.id}
+              layout
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 30,
+              }}
+            >
+              <CarCard car={car} />
+            </motion.li>
+          ))}
+        </AnimatePresence>
       </ul>
 
       <div className={css.navigationWrapper}>

@@ -19,7 +19,7 @@ export const CarCard = ({ car }: CarCardProps) => {
   const isFavorite = _hasHydrated ? favorites.includes(car.id) : false;
 
   return (
-    <li className={css.item}>
+    <div className={css.item}>
       <div className={css.fovoriteIconThumb}>
         <button
           onClick={() => toggleFavorite(car.id)}
@@ -76,6 +76,6 @@ export const CarCard = ({ car }: CarCardProps) => {
       >
         {isLoading ? "Loading..." : "Read more"}
       </Link>
-    </li>
+    </div>
   );
 };
