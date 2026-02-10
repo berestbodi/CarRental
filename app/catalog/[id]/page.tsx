@@ -50,7 +50,13 @@ interface PageProps {
 export default async function CarDetailsPage({ params }: PageProps) {
   const { id } = await params;
 
-  const car = await getCarById(id);
+  let car = null;
+
+  try {
+    car = await getCarById(id);
+  } catch {
+    notFound();
+  }
 
   if (!car) {
     notFound();
@@ -61,7 +67,6 @@ export default async function CarDetailsPage({ params }: PageProps) {
       <div className={css.leftSide}>
         <div className={css.imageWrapper}>
           <Image
-            key={car.id}
             src={car.img}
             alt={`${car.brand} ${car.model}`}
             width={640}
